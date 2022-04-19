@@ -14,7 +14,12 @@ struct event {
 struct {
 	__uint(type, BPF_MAP_TYPE_PERF_EVENT_ARRAY);
 } events SEC(".maps");
+
+// loading objects: field UretprobeBashReadline: program uretprobe_bash_readline: map .rodata: map create: read- and write-only maps not supported (requires >= v5.2)
 const volatile u64 target_pid = 0;
+
+// loading objects: field UretprobeBashReadline: program uretprobe_bash_readline: load program without BTF: invalid argument: unrecognized bpf_ld_imm64 insn
+//u64 target_pid = 0;
 
 // Force emitting struct event into the ELF.
 const struct event *unused __attribute__((unused));
